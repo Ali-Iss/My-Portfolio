@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="color-scheme" content="dark light">
+  <title>@[YourName]</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/style/standard.css" />
+  <link rel="icon" href="data:," />
+  <style>
+    
+      :root {
+        color-scheme: dark light;
+      }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <!-- Optional cover background -->
+    <!-- <div class="cover" style="background-image: url('cover.jpg')"></div> -->
+
+    <img src="./assets/images/Logo.png" alt="Profile" class="avatar" />
+
+    <!-- REPLACE: Client name -->
+    <h1>Sarah Chen</h1>
+
+    <!-- REPLACE: Client bio -->
+    <p class="bio">UX Designer • Illustrator • Coffee lover ☕</p>
+
+    <!-- Dark mode toggle -->
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="links">
+      <!-- REPLACE: Up to 10 links -->
+      <a href="https://instagram.com/sarah" class="link"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://dribbble.com/sarah" class="link"><i class="fab fa-dribbble"></i> Dribbble</a>
+      <a href="https://behance.net/sarah" class="link"><i class="fab fa-behance"></i> Behance</a>
+      <a href="https://youtube.com/@sarahdesign" class="link"><i class="fab fa-youtube"></i> YouTube</a>
+      <a href="https://sarah.design" class="link"><i class="fas fa-globe"></i> Portfolio</a>
+      <a href="https://shop.sarah.design" class="link"><i class="fas fa-shopping-bag"></i> Merch</a>
+      <a href="mailto:hello@sarah.design" class="link"><i class="fas fa-envelope"></i> Email</a>
+      <a href="https://linkedin.com/in/sarahchen" class="link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://twitter.com/sarahdesign" class="link"><i class="fab fa-x-twitter"></i> Twitter</a>
+      <a href="https://buymeacoffee.com/sarah" class="link"><i class="fas fa-coffee"></i> Buy Me Coffee</a>
+    </div>
+
+    <!-- Contact Form (via Formspree) -->
+    <form class="contact-form" action="https://formspree.io/f/mjgkpdgn" method="POST">
+      <h3>Send a message</h3>
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="email" name="email" placeholder="Your email" required />
+      <textarea name="message" placeholder="Your message" rows="3" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+
+    <footer class="footer">
+      <small>
+        Made by <a href="https://ali-iss.github.io/link-in-bio-page/">Ali-Iss</a>
+      </small> 
+    </footer>
+  </div>
+
+  <script src="./assets/scripts/standard.js"></script>
+</body>
+</html>

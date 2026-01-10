@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة تكلفة الخزانة - Wardrobe Calculator</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 15px;
+  min-height: 100vh;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+.header {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  padding: 20px 15px;
+  text-align: center;
+  position: relative;
+}
+.header h1 {
+  font-size: 1.8em;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+.header p {
+  font-size: 1em;
+  opacity: 0.9;
+}
+.btn-download {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px auto 0;
+  max-width: 250px;
+}
+.btn-download:hover {
+  background: #229954;
+}
+.content {
+  padding: 20px 15px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 14px;
+  min-width: 100%;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px 8px;
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+}
+th {
+  background: #f8f9fa;
+  font-weight: bold;
+  color: #333;
+  font-size: 12px;
+  min-width: 80px;
+}
+.item-name {
+  text-align: right;
+  font-weight: 500;
+  min-width: 120px;
+}
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 6px 8px;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+  min-width: 0;
+}
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #667eea;
+}
+.editable-total {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  cursor: pointer;
+}
+.editable-total:hover {
+  background: #ffe69c;
+}
+.total-cell {
+  background: #f0f0f0;
+  font-weight: bold;
+  color: #333;
+}
+.btn-delete {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.btn-delete:hover {
+  background: #c0392b;
+}
+.btn-add {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  width: 100%;
+}
+.btn-add:hover {
+  background: #2980b9;
+}
+.subtotal-row {
+  background: #e3f2fd !important;
+}
+.profit-row {
+  background: #f3e5f5 !important;
+}
+.grandtotal-row {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%) !important;
+  color: white !important;
+  font-size: 1.1em;
+}
+.grandtotal-row td {
+  border-color: #11998e !important;
+}
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+.summary-card {
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.summary-card.subtotal {
+  background: #e3f2fd;
+  border: 2px solid #2196f3;
+}
+.summary-card.profit {
+  background: #f3e5f5;
+  border: 2px solid #9c27b0;
+}
+.summary-card.total {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+}
+.summary-card h3 {
+  margin-bottom: 8px;
+  font-size: 1em;
+  font-weight: 600;
+}
+.summary-card .amount {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+  .btn-download {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .header { padding: 15px; }
+  .header h1 { font-size: 1.6em; }
+  .content { padding: 15px; }
+  table { font-size: 12px; }
+  th, td { padding: 8px 6px; }
+  .btn-add { font-size: 14px; padding: 8px; }
+  .summary-card .amount { font-size: 1.3em; }
+}
+@media (max-width: 480px) {
+  body { padding: 10px; }
+  .container { border-radius: 10px; }
+  .header { padding: 12px; }
+  .header h1 { font-size: 1.4em; }
+  .header p { font-size: 0.9em; }
+  .btn-download { padding: 8px 15px; font-size: 13px; max-width: 200px; }
+  .content { padding: 12px; }
+  table {
+    font-size: 11px;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  table thead, table tbody, table th, table td, table tr { display: block; }
+  thead tr { position: absolute; top: -9999px; left: -9999px; }
+  tr {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+  }
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+    white-space: normal;
+  }
+  #itemsTable tbody tr.item-row td:before {
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+  #itemsTable tbody tr.item-row td:nth-of-type(1):before { content: "Item"; }
+  #itemsTable tbody tr.item-row td:nth-of-type(2):before { content: "Quantity"; }
+  #itemsTable tbody tr.item-row td:nth-of-type(3):before { content: "Unit Price (MAD)"; }
+  #itemsTable tbody tr.item-row td:nth-of-type(4):before { content: "Total (MAD)"; }
+  #itemsTable tbody tr.item-row td:nth-of-type(5):before { content: "حذف"; }
+  .item-name { min-width: 100px; font-size: 12px; text-align: right; }
+  input[type="text"], input[type="number"] { padding: 4px 6px; font-size: 12px; }
+  .btn-delete { padding: 4px 8px; font-size: 11px; margin-top: 5px; }
+  .btn-add { padding: 6px; font-size: 13px; }
+  .summary { grid-template-columns: 1fr; gap: 10px; }
+  .summary-card { padding: 10px; }
+  .summary-card .amount { font-size: 1.2em; }
+  .subtotal-row td, .profit-row td, .grandtotal-row td {
+    padding: 8px 6px;
+    text-align: right;
+  }
+  .subtotal-row td:first-child,
+  .profit-row td:first-child,
+  .grandtotal-row td:first-child {
+    text-align: right;
+    padding-right: 10px;
+  }
+  .subtotal-row td:last-child,
+  .profit-row td:last-child,
+  .grandtotal-row td:last-child {
+    text-align: right;
+  }
+}
+
+.home-icon { width: 50px; height: 50px; } /* change to any size */
+/* responsive example */
+@media (max-width:480px){ .home-icon { width: 35px; height: 35px; } }
+</style>
+</head>
+<body>
+  
+<div class="container" id="printable">
+  <div class="header">
+    <div style="text-align:left; margin:10px 0;" >
+      <a  href="index.html" title="العودة للصفحة الرئيسية - Home Page" style="color:#2c3e50; text-decoration:underline; font-weight:bold; ">
+        <svg class="home-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.293 3.293 6.586 12l8.707 8.707 1.414-1.414L9.414 12l7.293-7.293-1.414-1.414z"/>
+        </svg>
+      </a>
+    </div>
+    <button class="btn-download" onclick="downloadPDF()">📥 تحميل PDF</button>
+    <h1>📊 حاسبة تكلفة الخزانة</h1>
+    <p>Wardrobe Cost Calculator</p>
+  </div>
+  <div class="content">
+    <table id="itemsTable">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Unit Price (MAD)</th>
+          <th>Total (MAD)</th>
+          <th>حذف</th>
+        </tr>
+      </thead>
+      <tbody id="itemsBody">
+      </tbody>
+    </table>
+    <div class="summary">
+      <div class="summary-card subtotal">
+        <h3>المجموع الفرعي<br>Subtotal</h3>
+        <div class="amount" id="subtotalAmount">0.00 MAD</div>
+      </div>
+      <div class="summary-card profit">
+        <h3>الربح<br>Profit (<span id="profitPercent">20</span>%)</h3>
+        <div class="amount" id="profitAmount">0.00 MAD</div>
+      </div>
+      <div class="summary-card total">
+        <h3>المجموع النهائي<br>Grand Total</h3>
+        <div class="amount" id="grandTotalAmount">0.00 MAD</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let items = [];
+let profitMargin = 20;
+let manualSubtotal = null;
+let manualProfit = null;
+
+function loadData() {
+  const savedData = localStorage.getItem('wardrobeCalculator');
+  if (savedData) {
+    const data = JSON.parse(savedData);
+    items = data.items || [];
+    profitMargin = data.profitMargin || 20;
+    manualSubtotal = data.manualSubtotal || null;
+    manualProfit = data.manualProfit || null;
+  } else {
+    items = [
+      { id: 1, name: 'MDF 18mm (sheet 2100x2800)', quantity: 0, unitPrice: 750 },
+      { id: 2, name: 'MDF 8mm (sheet)', quantity: 0, unitPrice: 120 },
+      { id: 3, name: 'Rwayed (wheels for sliding)', quantity: 0, unitPrice: 40 },
+      { id: 4, name: 'Rails (if sliding system)', quantity: 0, unitPrice: 50 },
+      { id: 5, name: 'Vis (screws pack)', quantity: 0, unitPrice: 15 },
+      { id: 6, name: 'Band de chant (meter)', quantity: 0, unitPrice: 30 },
+      { id: 7, name: 'Cola fix', quantity: 0, unitPrice: 0 }
+    ];
+  }
+}
+
+function saveData() {
+  const data = {
+    items: items,
+    profitMargin: profitMargin,
+    manualSubtotal: manualSubtotal,
+    manualProfit: manualProfit
+  };
+  localStorage.setItem('wardrobeCalculator', JSON.stringify(data));
+}
+
+function renderTable() {
+  const tbody = document.getElementById('itemsBody');
+  tbody.innerHTML = '';
+
+  items.forEach(item => {
+    const total = item.quantity * item.unitPrice;
+    const row = `
+      <tr class="item-row">
+        <td class="item-name">
+          <input type="text" value="${item.name}" onchange="updateName(${item.id}, this.value)">
+        </td>
+        <td>
+          <input type="number" value="${item.quantity}" min="0" step="0.5" onchange="updateQuantity(${item.id}, this.value)">
+        </td>
+        <td>
+          <input type="number" value="${item.unitPrice}" min="0" step="0.5" onchange="updatePrice(${item.id}, this.value)">
+        </td>
+        <td class="total-cell">${total.toFixed(2)}</td>
+        <td>
+          <button class="btn-delete" onclick="deleteItem(${item.id})">حذف</button>
+        </td>
+      </tr>
+    `;
+    tbody.innerHTML += row;
+  });
+
+  tbody.innerHTML += `
+    <tr>
+      <td colspan="5">
+        <button class="btn-add" onclick="addItem()">➕ إضافة مادة جديدة</button>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="5" style="border: none; padding: 5px;"></td>
+    </tr>
+  `;
+
+  const calculatedSubtotal = items.reduce((sum, item) => sum + (item.quantity * item.unitPrice), 0);
+  const subtotal = manualSubtotal !== null ? manualSubtotal : calculatedSubtotal;
+  let profit, calculatedProfitMargin;
+  if (manualProfit !== null) {
+    profit = manualProfit;
+    calculatedProfitMargin = subtotal > 0 ? (profit / subtotal * 100) : 0;
+  } else {
+    profit = subtotal * (profitMargin / 100);
+    calculatedProfitMargin = profitMargin;
+  }
+  const grandTotal = subtotal + profit;
+
+  tbody.innerHTML += `
+    <tr class="subtotal-row">
+      <td colspan="3" style="text-align: right; font-weight: bold;">المجموع الفرعي / Subtotal:</td>
+      <td style="font-weight: bold; font-size: 1.2em;">
+        <input type="number" class="editable-total" value="${subtotal.toFixed(2)}" min="0" step="0.5"
+        onchange="updateSubtotal(this.value)" title="انقر للتعديل المباشر">
+      </td>
+      <td></td>
+    </tr>
+    <tr class="profit-row">
+      <td colspan="2" style="text-align: right; font-weight: bold;">هامش الربح / Profit Margin (%):</td>
+      <td>
+        <input type="number" value="${calculatedProfitMargin.toFixed(2)}" min="0" step="0.5" onchange="updateProfitMargin(this.value)">
+      </td>
+      <td style="font-weight: bold; font-size: 1.2em;">
+        <input type="number" class="editable-total" value="${profit.toFixed(2)}" min="0" step="0.5"
+        onchange="updateProfit(this.value)" title="انقر للتعديل المباشر">
+      </td>
+      <td></td>
+    </tr>
+    <tr class="grandtotal-row">
+      <td colspan="3" style="text-align: right; font-weight: bold; font-size: 1.1em;">المجموع الإجمالي / Grand Total:</td>
+      <td style="font-weight: bold; font-size: 1.3em;">${grandTotal.toFixed(2)}</td>
+      <td></td>
+    </tr>
+  `;
+
+  document.getElementById('subtotalAmount').textContent = subtotal.toFixed(2) + ' MAD';
+  document.getElementById('profitAmount').textContent = profit.toFixed(2) + ' MAD';
+  document.getElementById('grandTotalAmount').textContent = grandTotal.toFixed(2) + ' MAD';
+  document.getElementById('profitPercent').textContent = calculatedProfitMargin.toFixed(1);
+}
+
+function updateName(id, value) {
+  const item = items.find(i => i.id === id);
+  if (item) {
+    item.name = value;
+    saveData();
+  }
+}
+function updateQuantity(id, value) {
+  const item = items.find(i => i.id === id);
+  if (item) {
+    item.quantity = parseFloat(value) || 0;
+    manualSubtotal = null;
+    manualProfit = null;
+    saveData();
+    renderTable();
+  }
+}
+function updatePrice(id, value) {
+  const item = items.find(i => i.id === id);
+  if (item) {
+    item.unitPrice = parseFloat(value) || 0;
+    manualSubtotal = null;
+    manualProfit = null;
+    saveData();
+    renderTable();
+  }
+}
+function updateSubtotal(value) {
+  manualSubtotal = parseFloat(value) || 0;
+  manualProfit = null;
+  saveData();
+  renderTable();
+}
+function updateProfit(value) {
+  manualProfit = parseFloat(value) || 0;
+  const calculatedSubtotal = items.reduce((sum, item) => sum + (item.quantity * item.unitPrice), 0);
+  const subtotal = manualSubtotal !== null ? manualSubtotal : calculatedSubtotal;
+  profitMargin = subtotal > 0 ? (manualProfit / subtotal * 100) : 0;
+  saveData();
+  renderTable();
+}
+function updateProfitMargin(value) {
+  profitMargin = parseFloat(value) || 0;
+  manualProfit = null;
+  saveData();
+  renderTable();
+}
+function deleteItem(id) {
+  items = items.filter(i => i.id !== id);
+  saveData();
+  renderTable();
+}
+function addItem() {
+  const newItem = { id: Date.now(), name: '', quantity: 0, unitPrice: 0 };
+  items.push(newItem);
+  saveData();
+  renderTable();
+}
+
+// ✅ NEW downloadPDF function — professional invoice
+function downloadPDF() {
+  // Calculate current values
+  const calculatedSubtotal = items.reduce((sum, item) => sum + (item.quantity * item.unitPrice), 0);
+  const subtotal = manualSubtotal !== null ? manualSubtotal : calculatedSubtotal;
+  let profit, calculatedProfitMargin;
+  if (manualProfit !== null) {
+    profit = manualProfit;
+    calculatedProfitMargin = subtotal > 0 ? (profit / subtotal * 100) : 0;
+  } else {
+    profit = subtotal * (profitMargin / 100);
+    calculatedProfitMargin = profitMargin;
+  }
+  const grandTotal = subtotal + profit;
+
+  // Format date (Moroccan Arabic locale)
+  const now = new Date();
+  const invoiceDate = now.toLocaleDateString('ar-MA', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+  const invoiceNumber = 'INV-' + Math.floor(10000 + Math.random() * 90000);
+
+  // Build HTML content
+  let itemsHTML = '';
+  items.forEach(item => {
+    const total = item.quantity * item.unitPrice;
+    itemsHTML += `
+      <tr>
+        <td class="item-name">${item.name || 'بند جديد'}</td>
+        <td>${item.quantity}</td>
+        <td>${item.unitPrice.toFixed(2)}</td>
+        <td>${total.toFixed(2)}</td>
+      </tr>
+    `;
+  });
+
+  const printContent = `
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فاتورة حاسبة تكلفة الخزانة</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: white;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .invoice-container {
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .invoice-header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    .invoice-header h1 { font-size: 28px; margin-bottom: 10px; font-weight: 700; }
+    .invoice-header p { font-size: 16px; opacity: 0.9; margin-bottom: 15px; }
+    .invoice-meta { display: flex; justify-content: space-between; margin-top: 20px; font-size: 14px; }
+    .invoice-body { padding: 30px; }
+    .invoice-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+    .invoice-table th, .invoice-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    .invoice-table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #333;
+    }
+    .item-name { text-align: right; }
+    .subtotal-row { background: #e3f2fd; }
+    .profit-row { background: #f3e5f5; }
+    .grandtotal-row {
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white;
+    }
+    .grandtotal-row td { border-color: #11998e; }
+    .invoice-footer {
+      padding: 20px 30px;
+      background: #f8f9fa;
+      border-top: 2px solid #e9ecef;
+    }
+    .invoice-footer p {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+    }
+    .amount { font-weight: 700; font-size: 18px; }
+    .grand-total { font-size: 24px !important; color: #2c3e50; }
+    @media print {
+      body { padding: 0; }
+      .invoice-container { border: none; box-shadow: none; border-radius: 0; }
+      .invoice-header { padding: 25px; }
+      .invoice-body { padding: 25px; }
+    }
+    @media (max-width: 600px) {
+      .invoice-container { margin: 0; border-radius: 0; }
+      .invoice-header { padding: 20px 15px; }
+      .invoice-header h1 { font-size: 22px; }
+      .invoice-meta { flex-direction: column; gap: 10px; }
+      .invoice-body { padding: 20px 15px; }
+      .invoice-table th, .invoice-table td { padding: 8px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="invoice-container">
+    <div class="invoice-header">
+      <h1>📊 حاسبة تكلفة الخزانة</h1>
+      <p>Wardrobe Cost Calculator</p>
+      <div class="invoice-meta">
+        <div>تاريخ الفاتورة: ${invoiceDate}</div>
+        <div>رقم الفاتورة: ${invoiceNumber}</div>
+      </div>
+    </div>
+    <div class="invoice-body">
+      <table class="invoice-table">
+        <thead>
+          <tr>
+            <th>البند</th>
+            <th>الكمية</th>
+            <th>سعر الوحدة (MAD)</th>
+            <th>المجموع (MAD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${itemsHTML}
+          <tr class="subtotal-row">
+            <td colspan="3" style="text-align: right; font-weight: bold;">المجموع الفرعي / Subtotal:</td>
+            <td class="amount">${subtotal.toFixed(2)} MAD</td>
+          </tr>
+          <tr class="profit-row">
+            <td colspan="2" style="text-align: right; font-weight: bold;">هامش الربح / Profit Margin:</td>
+            <td>${calculatedProfitMargin.toFixed(1)}%</td>
+            <td class="amount">${profit.toFixed(2)} MAD</td>
+          </tr>
+          <tr class="grandtotal-row">
+            <td colspan="3" style="text-align: right; font-weight: bold;">المجموع الإجمالي / Grand Total:</td>
+            <td class="amount grand-total">${grandTotal.toFixed(2)} MAD</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="invoice-footer">
+      <p>شكرًا لاختياركم خدماتنا | Thank you for choosing our services</p>
+    </div>
+  </div>
+  <script>
+    window.onload = function() {
+      window.print();
+    };
+  <\/script>
+</body>
+</html>
+  `;
+
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(printContent);
+  printWindow.document.close();
+}
+
+// Initialize
+loadData();
+renderTable();
+</script>
+</body>
+</html>

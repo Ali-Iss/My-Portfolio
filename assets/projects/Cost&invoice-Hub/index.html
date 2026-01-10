@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="color-scheme" content="dark light">
+  <title>Cost & invoice Hub</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="Logo.png" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+    
+      :root {
+        color-scheme: dark light;
+      }
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Cairo", sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      color: #333;
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 40px 0 30px;
+    }
+
+    
+
+    .header h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
+    }
+
+    .header p {
+      font-size: 1.3rem;
+      color: #555;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .hero-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  margin-bottom: 1.5rem;
+  /* Prevent forced dark inversion */
+  forced-color-adjust: none;
+  color-scheme: normal;
+}
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 35px 30px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.09);
+      border: 1px solid #eaeef5;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .card h2 {
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+      color: #2c3e50;
+    }
+
+    .card p {
+      color: #666;
+      margin-bottom: 25px;
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 30px;
+      background: #2c3e50;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: #1a252f;
+      transform: scale(1.03);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px;
+      color: #777;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 { font-size: 2.1rem; }
+      .header p { font-size: 1.1rem; }
+      .cards { gap: 20px; }
+      .card { padding: 25px 20px; }
+      .btn { padding: 12px 25px; font-size: 1.1rem; }
+    }
+    .home-icon { width: 50px; height: 50px; } /* change to any size */
+/* responsive example */
+@media (max-width:480px){ .home-icon { width: 35px; height: 35px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div style="text-align:left; margin:10px 0;" >
+      <a  href="../../../index.html" title="العودة للصفحة الرئيسية - Home Page" style="color:#2c3e50; text-decoration:underline; font-weight:bold; ">
+        <svg class="home-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.293 3.293 6.586 12l8.707 8.707 1.414-1.414L9.414 12l7.293-7.293-1.414-1.414z"/>
+        </svg>
+      </a>
+    </div>
+      <img src="../../images/Logo.png" alt="Ali Iss logo" class="logo hero-logo" />
+      <h1>Cost & invoice Hub</h1>
+      <p>أدواتك الذكية لحساب تكلفة الخزانة وإنشاء فواتير احترافية — مصممة خصيصًا لنجاري MDF في المغرب</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h2>🧮 حاسبة تكلفة الخزانة</h2>
+        <p>أدخل المواد، الكميات، والأسعار — واحصل فورًا على التكلفة الإجمالية مع هامش ربح قابل للتخصيص.</p>
+        <a href="calculator.html" class="btn">ابدأ الحساب</a>
+      </div>
+      <div class="card">
+        <h2>📄 فاتورة احترافية</h2>
+        <p>أنشئ فاتورة رسمية لموقعك أو عميلك، مع دعم المقاول الذاتي، خيارات دفع، وطباعة مثالية لورقة A4.</p>
+        <a href="invoice.html" class="btn">إنشاء فاتورة</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 MDF DESIGN – جميع الحقوق محفوظة</p>
+    </div>
+  </div>
+</body>
+</html>

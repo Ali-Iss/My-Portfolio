@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="All my links in one place." />
+  <meta name="color-scheme" content="dark light">
+  <!-- REPLACE title & description for client -->
+  <title>Nadia Rahmani | Creative Director</title>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="./assets/images/favicon.ico" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/style/premium.css" />
+
+  <!-- Google Analytics 4 (replace G-XXXXX with client's ID or remove) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXX');
+  </script>
+  -->
+
+  <style>
+    
+      :root {
+        color-scheme: dark light;
+      }
+
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <img src="./assets/images/Logo.png" alt="Nadia Rahmani" class="avatar" />
+
+    <h1>Nadia Rahmani</h1>
+    <p class="bio">Creative Director • Branding Expert 🎨<br>Based in Casablanca, Morocco</p>
+
+    <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- PDF Export Button -->
+    <button id="pdf-btn" class="pdf-btn">
+      <i class="fas fa-file-pdf"></i> Save as PDF
+    </button>
+
+    <!-- Social Links -->
+    <div class="link-section">
+      <h2 class="section-title">Social</h2>
+      <div class="links">
+        <a href="https://instagram.com/nadia.creates" class="link" style="--delay: 0.1s"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://linkedin.com/in/nadiarahmani" class="link" style="--delay: 0.2s"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://behance.net/nadiarahmani" class="link" style="--delay: 0.3s"><i class="fab fa-behance"></i> Behance</a>
+        <a href="https://youtube.com/@nadiacreative" class="link" style="--delay: 0.4s"><i class="fab fa-youtube"></i> YouTube</a>
+      </div>
+    </div>
+
+    <!-- Work Links -->
+    <div class="link-section">
+      <h2 class="section-title">Work</h2>
+      <div class="links">
+        <a href="https://nadia.design" class="link" style="--delay: 0.1s"><i class="fas fa-globe"></i> Portfolio</a>
+        <a href="https://nadia.design/services" class="link" style="--delay: 0.2s"><i class="fas fa-briefcase"></i> Services</a>
+        <a href="https://nadia.design/blog" class="link" style="--delay: 0.3s"><i class="fas fa-newspaper"></i> Blog</a>
+        <a href="mailto:hello@nadia.design" class="link" style="--delay: 0.4s"><i class="fas fa-envelope"></i> Hire Me</a>
+      </div>
+    </div>
+
+    <!-- Shop & Support -->
+    <div class="link-section">
+      <h2 class="section-title">Support</h2>
+      <div class="links">
+        <a href="https://buymeacoffee.com/nadia" class="link" style="--delay: 0.1s"><i class="fas fa-coffee"></i> Buy Me Coffee</a>
+        <a href="https://paypal.me/nadiarahmani" class="link" style="--delay: 0.2s"><i class="fab fa-paypal"></i> PayPal</a>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <h3>Send a message</h3>
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="email" name="email" placeholder="Your email" required />
+      <textarea name="message" placeholder="How can I help?" rows="3" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+
+    <div id="form-success" class="form-success hidden">
+      ✅ Message sent! I’ll reply soon.
+    </div>
+
+    <footer class="footer">
+      <small>
+        © 2026 [YourName]. Made by <a href="https://ali-iss.github.io/link-in-bio-page/">Ali-Iss</a>
+      </small> 
+    </footer>
+  </div>
+
+  <!-- Custom Domain Instructions (for you, the seller — delete before delivery) -->
+  <!--
+  TO SETUP CUSTOM DOMAIN (e.g., nadia.design):
+  1. Buy domain from Namecheap, GoDaddy, etc.
+  2. On GitHub Pages: Settings > Pages > Custom domain → enter domain
+  3. Add CNAME file in root with domain name (e.g., "nadia.design")
+  4. Update DNS: A records to 185.199.108.153, etc. (GitHub provides guide)
+  -->
+
+  <script src="./assets/scripts/premium.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Studio Lumière – Branding, Web & Creative Direction in Morocco." />
+  <meta name="color-scheme" content="dark light">
+  <title>Studio Lumière | Creative Agency</title>
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="./assets/images/favicon.ico" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/style/premium.css" />
+
+  <!-- Google Analytics 4 (replace G-XXXXX or remove) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXX');
+  </script>
+  -->
+  <style>
+    
+      :root {
+        color-scheme: dark light;
+      }
+
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <img src="./assets/images/Logo.png" alt="Studio Lumière" class="avatar" />
+
+    <h1>Studio Lumière</h1>
+    <p class="bio">Creative Agency • Casablanca 🌍<br>Branding • Web Design • Digital Strategy</p>
+
+    <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <button id="pdf-btn" class="pdf-btn">
+      <i class="fas fa-file-pdf"></i> Portfolio PDF
+    </button>
+
+    <!-- Social -->
+    <div class="link-section">
+      <h2 class="section-title">Connect</h2>
+      <div class="links">
+        <a href="https://instagram.com/studiolumiere" class="link" style="--delay: 0.1s"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://linkedin.com/company/studiolumiere" class="link" style="--delay: 0.2s"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://behance.net/studiolumiere" class="link" style="--delay: 0.3s"><i class="fab fa-behance"></i> Behance</a>
+        <a href="mailto:hello@studiolumiere.ma" class="link" style="--delay: 0.4s"><i class="fas fa-envelope"></i> Email Us</a>
+      </div>
+    </div>
+
+    <!-- Work -->
+    <div class="link-section">
+      <h2 class="section-title">Our Work</h2>
+      <div class="links">
+        <a href="https://studiolumiere.ma" class="link" style="--delay: 0.1s"><i class="fas fa-globe"></i> Website</a>
+        <a href="https://studiolumiere.ma/case-studies" class="link" style="--delay: 0.2s"><i class="fas fa-folder-open"></i> Case Studies</a>
+        <a href="https://studiolumiere.ma/services" class="link" style="--delay: 0.3s"><i class="fas fa-briefcase"></i> Services</a>
+        <a href="https://studiolumiere.ma/team" class="link" style="--delay: 0.4s"><i class="fas fa-users"></i> Our Team</a>
+      </div>
+    </div>
+
+    <!-- Client Actions -->
+    <div class="link-section">
+      <h2 class="section-title">For Clients</h2>
+      <div class="links">
+        <a href="https://calendly.com/studiolumiere/consult" class="link" style="--delay: 0.1s"><i class="fas fa-calendar-check"></i> Book a Call</a>
+        <a href="https://wa.me/212612345678" class="link" style="--delay: 0.2s"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://studiolumiere.ma/contact" class="link" style="--delay: 0.3s"><i class="fas fa-paper-plane"></i> Contact Form</a>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <h3>Send a project inquiry</h3>
+      <input type="text" name="name" placeholder="Your name or company" required />
+      <input type="email" name="email" placeholder="Your email" required />
+      <textarea name="message" placeholder="Project scope, timeline, or budget" rows="3" required></textarea>
+      <button type="submit">Send Brief</button>
+    </form>
+
+    <div id="form-success" class="form-success hidden">
+      ✅ Thank you! We’ll review your brief and reply within 24h.
+    </div>
+
+    <footer class="footer">
+      <small>
+        © 2026 Studio Lumière. Made by <a href="https://ali-iss.github.io/link-in-bio-page/">Ali-Iss</a>
+      </small>
+    </footer>
+  </div>
+
+  <!-- Custom Domain Note (for you) -->
+  <!-- To use studiolumiere.ma: set CNAME + DNS as per GitHub Pages guide -->
+
+  <script src="./assets/scripts/premium.js"></script>
+</body>
+</html>

@@ -500,6 +500,17 @@
   color-scheme: normal;
 }
 
+.signature-box {
+  text-align: center;
+  flex: 1;
+}
+
+.signature-box .signature-line {
+  width: 160px;
+  margin: 0 auto 8px !important;
+  border-top: 2px solid #2c3e50;
+}
+
     </style>
   </head>
   <body>
@@ -749,7 +760,7 @@
           </td>
         </tr>
       </table>
-    
+      <div class="tax-note">بدون TVA – مقاول ذاتي</div>
 
       <div class="service-section" style="margin: 20px 0">
         <div><strong>طريقة الأداء:</strong></div>
@@ -773,11 +784,27 @@
       </button>
     </div>
 
+    <!-- Signature Section -->
+<div class="signatures" style="display: flex; justify-content: space-between; margin: 30px 0 20px; gap: 20px;">
+  <div class="signature-box">
+    <div class="signature-line" style="margin: 0 auto 8px;"></div>
+    <div style="font-size: 12px; color: #555;">ختم وتوقيع المقاول</div>
+  </div>
+  <div class="signature-box">
+    <div class="signature-line" style="margin: 0 auto 8px;"></div>
+    <div style="font-size: 12px; color: #555;">توقيع الزبون</div>
+  </div>
+</div>
+
       <div class="footer">
         <div>شكرًا لثقتكم في خدماتنا</div>
-       
+        <div style="margin-top: 8px">
+          MDF DESIGN - مقاول ذاتي<br />
+          السجل التجاري: [YOUR REGISTRATION NUMBER]<br />
+          العنوان: [YOUR FULL ADDRESS]
+        </div>
         <div class="signature-line"></div>
-        <div>التوقيع والختم - Ali Iss</div>
+        <div>التوقيع والختم - MDF DESIGN</div>
       </div>
     </div>
 
@@ -888,5 +915,3 @@ function printInvoice() {
     </script>
   </body>
 </html>
-
-

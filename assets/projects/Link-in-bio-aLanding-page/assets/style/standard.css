@@ -1,11 +1,13 @@
+/* ===== BASE THEME (fallback – matches original) ===== */
 :root {
-  --bg: #ffffff;
-  --bg-card: rgb(224, 226, 233);
+  --bg: #848c94;
+  --bg-card: rgb(208, 210, 218);
   --text: #1e293b;
-  --text-secondary: #64748b;
+  --text-secondary: #546275;
   --border: #e2e8f0;
   --accent: #3b82f6;
   --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --bg-form: #95aabf;
 }
 
 [data-theme="dark"] {
@@ -15,6 +17,47 @@
   --text-secondary: #cbd5e1;
   --border: #333;
   --card-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  --bg-form: #121212;
+}
+
+/* ===== THEME: Amira (Music / Warm Purple) ===== */
+.theme-amira {
+  --accent: #a855f7; /* vibrant purple */
+  --bg-card: #f5f3ff;
+  --bg: #faf5ff;
+  --bg-form: #ede9fe;
+  --border: #731de3;
+  --text-secondary: #7e22ce;
+
+}
+
+[data-theme="dark"] .theme-amira {
+  --bg: #0c0a0f;
+  --bg-card: #1a1322;
+  --bg-form: #120f1a;
+  --border: #731de3;
+  --text-secondary: #c4b5fd;
+  --accent: #7a64d4;
+
+}
+
+/* ===== THEME: Sarah (Design / Teal) ===== */
+.theme-sarah {
+  --accent: #0d9488; /* rich teal */
+  --bg-card: #ecfdf5;
+  --bg: #f0fdfa;
+  --bg-form: #ccfbf1;
+  --border: #0bc56f;
+  --text-secondary: #0f766e;
+}
+
+[data-theme="dark"] .theme-sarah {
+  --bg: #0b1113;
+  --bg-card: #0f2224;
+  --bg-form: #0c1a1c;
+  --border: #11dbca;
+  --text-secondary: #5eead4;
+  --accent: #08a38b;
 }
 
 * {
@@ -153,7 +196,7 @@ h1 {
   margin-bottom: 12px;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: var(--bg);
+  background: var(--bg-form);
   color: var(--text);
   font-family: inherit;
 }

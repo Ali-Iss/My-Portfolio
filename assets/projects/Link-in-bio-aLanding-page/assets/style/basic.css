@@ -6,8 +6,6 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f8fafc;
-  color: #1e293b;
   line-height: 1.5;
   padding: 20px;
   min-height: 100vh;
@@ -78,4 +76,83 @@ h1 {
 .footer a {
   color: #2563eb;
   text-decoration: none;
+}
+
+
+/* =========== THEME: Layla (Photographer) =========== */
+.theme-layla {
+  background: #fdf2f8; /* soft pink-tinged background */
+}
+
+.theme-layla .avatar {
+  border-color: #f472b6; /* subtle pink accent */
+}
+
+.theme-layla .link {
+  background: #ec4899; /* vibrant pink-purple */
+}
+
+.theme-layla .link:hover {
+  background: #db2777; /* darker pink on hover */
+}
+
+/* Dark mode support for Layla */
+@media (prefers-color-scheme: dark) {
+  .theme-layla {
+    background: #1f1b24; /* deep plum base */
+  }
+  .theme-layla .avatar {
+    border-color: #d946ef;
+  }
+  .theme-layla .link {
+    background: #d946ef;
+  }
+  .theme-layla .link:hover {
+    background: #c026d3;
+  }
+  .theme-layla .bio {
+    color: #e9d5ff;
+  }
+  .theme-layla .footer {
+    color: #ddd6fe;
+  }
+}
+
+/* =========== THEME: Youssef (Coach) =========== */
+.theme-youssef {
+  background: #f0fdf4; /* fresh green-tinted background */
+}
+
+.theme-youssef .avatar {
+  border-color: #86efac; /* soft green */
+}
+
+.theme-youssef .link {
+  background: #10b981; /* energetic green */
+}
+
+.theme-youssef .link:hover {
+  background: #059669; /* deeper green on hover */
+}
+
+/* Dark mode support for Youssef */
+@media (prefers-color-scheme: dark) {
+  .theme-youssef {
+    background: #0c1a12; /* dark forest tone */
+  }
+  .theme-youssef .avatar {
+    border-color: #34d399;
+  }
+  .theme-youssef .link {
+    background: #34d399;
+  }
+  .theme-youssef .link:hover {
+    background: #10b981;
+  }
+  .theme-youssef .bio {
+    color: #bbf7d0;
+  }
+  .theme-youssef .footer {
+    color: #a7f3d0;
+  }
 }

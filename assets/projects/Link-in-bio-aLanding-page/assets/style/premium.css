@@ -1,23 +1,81 @@
 :root {
-  --accent: #10b981;
-  --accent-light: #34d399;
-  --accent-dark: #059669;
-  --bg: ##23345e;
-  --bg-card: #505966;
-  --text: #000000;
-  --text-secondary: #0c0e0f;
-  --border: #e5e7eb;
-  --card-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15);
+  --bg: #848c94;
+  --bg-card: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+  --accent: #23345e;
+  --accent-light: #334155;
+  --accent-dark: #1e293b;
+  --card-shadow: 0 10px 25px -5px rgba(35, 52, 94, 0.1);
+  --bg-form: #0b3d4a;
+  --accent-footer: #250012;
 }
 
 [data-theme="dark"] {
-  --bg: #23345e;
+  --bg: #0f172a;
   --bg-card: #1e293b;
-  --text: #f8fafc;
+  --text: #f1f5f9;
   --text-secondary: #cbd5e1;
   --border: #334155;
+  --accent: #64748b;
+  --accent-light: #94a3b8;
+  --accent-dark: #475569;
   --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  --bg-form: #0f172a;
+  --accent-footer: #ffffff;
 }
+
+/* ===== THEME: Nadia (Creative – Warm Coral/Teal) ===== */
+.theme-nadia {
+  --accent: #e14190;       /* coral pink */
+  --accent-light: #e14190;
+  --accent-dark: #db2777;
+  --bg-card: #ffedf5;
+  --text-secondary: #636363;
+  --bg-form: #f996d8;
+  --border: #ed00ff;
+  --accent-footer: #250012;
+
+}
+
+[data-theme="dark"] .theme-nadia {
+  --accent: #c90069;
+  --accent-light: #c90069;
+  --accent-dark: #e11d74;
+  --bg-card: #530024;
+  --text-secondary: #cbd5e1;
+  --bg-form: #0f172a;
+  --border: #dd03ba;
+  --accent-footer: #ff3f9b;
+
+}
+
+/* ===== THEME: Karim (Developer – Electric Blue/Cyan) ===== */
+.theme-karim {
+  --accent: #2187b5;       /* vibrant cyan-blue */
+  --accent-light: #2187b5;
+  --accent-dark: #0284c7;
+  --bg-card: #dcf7ff;
+  --bg: #474658;
+  --bg-form: #004253;
+  --border: #3d85eb;
+  --accent-footer: #250012;
+}
+
+[data-theme="dark"] .theme-karim {
+  --accent: #0a98d7;
+  --accent-light: #0a98d7;
+  --accent-dark: #0ea5e9;
+  --bg-card: #004257;
+  --bg: #474658;
+  --bg-form: #0f172a;
+  --border: #004bb5;
+  --accent-footer: #ffffff;
+  
+}
+
+
 
 * {
   margin: 0;
@@ -26,7 +84,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -46,7 +104,6 @@ body {
   box-shadow: var(--card-shadow);
   text-align: center;
   position: relative;
-  
 }
 
 .avatar {
@@ -58,12 +115,17 @@ body {
   margin: 0 auto 22px;
   background: white;
   animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  
 }
 
 @keyframes popIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 h1 {
@@ -128,13 +190,25 @@ h1 {
   animation: fadeInUp 0.6s forwards;
 }
 
-.link-section:nth-child(4) { animation-delay: 0.1s; }
-.link-section:nth-child(5) { animation-delay: 0.2s; }
-.link-section:nth-child(6) { animation-delay: 0.3s; }
+.link-section:nth-child(4) {
+  animation-delay: 0.1s;
+}
+.link-section:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.link-section:nth-child(6) {
+  animation-delay: 0.3s;
+}
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .section-title {
@@ -167,7 +241,10 @@ h1 {
 }
 
 @keyframes slideIn {
-  to { opacity: 1; transform: translateX(0); }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .link:hover {
@@ -190,7 +267,9 @@ h1 {
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 .contact-form h3 {
@@ -206,7 +285,7 @@ h1 {
   margin-bottom: 14px;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: var(--bg);
+  background: var(--bg-form);
   color: var(--text);
   font-family: inherit;
 }
@@ -253,7 +332,7 @@ h1 {
 }
 
 .footer a {
-  color: var(--accent);
+  color: var(--accent-footer);
   text-decoration: none;
   font-weight: 600;
 }
